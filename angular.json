@@ -1,0 +1,193 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "skirata.pro": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/skirata.pro",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/app/css",
+              "src/app/js",
+              "src/app/images",
+              "src/assets/custom/fontawesome-pro/webfonts/"
+            ],
+            "styles": [
+              "src/assets/custom/fontawesome-pro/css/all.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/metismenu/dist/metisMenu.css",
+              "node_modules/node-waves/dist/waves.css",
+              
+              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
+              "node_modules/datatables.net-autofill-bs4/css/autoFill.bootstrap4.css",
+              "node_modules/datatables.net-buttons-bs4/css/buttons.bootstrap4.css",
+              "node_modules/datatables.net-colreorder-bs4/css/colReorder.bootstrap4.css",
+              "node_modules/datatables.net-fixedcolumns-bs4/css/fixedColumns.bootstrap4.css",
+              "node_modules/datatables.net-fixedheader-bs4/css/fixedHeader.bootstrap4.css",
+              "node_modules/datatables.net-keytable-bs4/css/keyTable.bootstrap4.css",
+              "node_modules/datatables.net-responsive-bs4/css/responsive.bootstrap4.css",
+              "node_modules/datatables.net-rowgroup-bs4/css/rowGroup.bootstrap4.css",
+              "node_modules/datatables.net-rowreorder-bs4/css/rowReorder.bootstrap4.css",
+              "node_modules/datatables.net-scroller-bs4/css/scroller.bootstrap4.css",
+              "node_modules/datatables.net-select-bs4/css/select.bootstrap4.css",
+              
+              "src/app/css/app.bundle.css",
+              "src/assets/app.css"
+            ],
+            "scripts": [
+              "node_modules/pace-js/pace.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/popper.js/dist/umd/popper.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js",
+              "node_modules/metismenu/dist/metisMenu.js",
+              "node_modules/node-waves/dist/waves.js",
+              "node_modules/jquery-slimscroll/jquery.slimscroll.js",
+              "node_modules/jquery-sparkline/jquery.sparkline.js",
+
+
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
+              "node_modules/datatables.net-autofill/js/dataTables.autoFill.js",							
+              "node_modules/datatables.net-autofill-bs4/js/autoFill.bootstrap4.js",
+              "node_modules/datatables.net-buttons/js/dataTables.buttons.js",
+              "node_modules/datatables.net-buttons-bs4/js/buttons.bootstrap4.js",
+              "node_modules/datatables.net-buttons/js/buttons.html5.js",
+              "node_modules/datatables.net-buttons/js/buttons.print.js",
+              "node_modules/datatables.net-buttons/js/buttons.colVis.js",
+              "node_modules/datatables.net-colreorder/js/dataTables.colReorder.js",							
+              "node_modules/datatables.net-colreorder-bs4/js/colReorder.bootstrap4.js",
+              "node_modules/datatables.net-fixedcolumns/js/dataTables.fixedColumns.js",							
+              "node_modules/datatables.net-fixedcolumns-bs4/js/fixedColumns.bootstrap4.js",
+              "node_modules/datatables.net-fixedheader/js/dataTables.fixedHeader.js",							
+              "node_modules/datatables.net-fixedheader-bs4/js/fixedHeader.bootstrap4.js",
+              "node_modules/datatables.net-keytable/js/dataTables.keyTable.js",							
+              "node_modules/datatables.net-keytable-bs4/js/keyTable.bootstrap4.js",
+              "node_modules/datatables.net-responsive/js/dataTables.responsive.js",							
+              "node_modules/datatables.net-responsive-bs4/js/responsive.bootstrap4.js",
+              "node_modules/datatables.net-rowgroup/js/dataTables.rowGroup.js",							
+              "node_modules/datatables.net-rowgroup-bs4/js/rowGroup.bootstrap4.js",
+              "node_modules/datatables.net-rowreorder/js/dataTables.rowReorder.js",							
+              "node_modules/datatables.net-rowreorder-bs4/js/rowReorder.bootstrap4.js",
+              "node_modules/datatables.net-scroller/js/dataTables.scroller.js",							
+              "node_modules/datatables.net-scroller-bs4/js/scroller.bootstrap4.js",
+              "node_modules/datatables.net-select/js/dataTables.select.js",							
+              "node_modules/datatables.net-select-bs4/js/select.bootstrap4.js",
+              
+              "src/app/js/app.bundle.js",
+              "src/assets/app.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "skirata.pro:build",
+            "port": 80
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "skirata.pro:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "skirata.pro:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/app/css",
+              "src/app/js",
+              "src/app/images"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "skirata.pro:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "skirata.pro:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "skirata.pro",
+  "cli": {
+    "analytics": false
+  }
+}

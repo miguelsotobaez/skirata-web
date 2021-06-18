@@ -1,0 +1,162 @@
+
+        <!-- BEGIN Page Wrapper -->
+        <div class="wrapper sidebar-fixed header-fixed">
+          <!-- BEGIN Left Aside -->
+          <div id="sidebar">
+                <div class="sidebar-header">
+                    <div class="isotype mt-2 ml-2">
+                        <a href="#">
+                            <i class="mando fab fa-mandalorian"></i>
+                        </a>
+                    </div>
+                    <div class="logo ml-4 text-center">
+                        <a href="#">
+                            <span><b>{{name | uppercase}}</b></span>
+                        </a>
+                    </div>
+                    
+                </div>
+              <!-- BEGIN PRIMARY NAVIGATION -->
+              <div class="sidebar-body">
+                  <div class="info-card">
+                    
+                      <img src="./app/images/avatar.jpg" class="profile-image rounded img-fluid" alt="jkr.duocoder.com" >
+                      <div class="info-card-text">
+                        <span class="d-inline-block text-truncate text-truncate-sm">Server v{{version}}</span>
+                        <span class="d-inline-block text-truncate text-truncate-sm">JK: Jedi Academy</span>
+                        <a href="https://jkhub.org/files/file/952-ja-client-side/" target="_blank" class="d-flex align-items-center">
+                            <span class="text-truncate text-truncate-sm d-inline-block">
+                                MOD: JA+
+                            </span>
+                        </a>
+                          
+                      </div>
+                      <img src="./app/images/cover.png" class="cover" alt="cover">
+                  </div>
+                  <nav class="sidebar-nav">
+                      <ul class="metismenu element" id="menu1">
+                          <li id="dashboard" class="element active mm-active">
+                              <a class="has-arrow" href="#" title="Dashboard" data-filter-tags="dashboard">
+                                  <span class="fad fa-chart-pie-alt fa-fw"></span>
+                                  <span class="element">Dashboard</span>
+                              </a>
+                              <ul class="element mm-collapse">
+                                  <li id="japlus" class="element">
+                                      <a [routerLink]="['/japlus']" routerLinkActive="active" title="JA+" data-filter-tags="japlus">
+                                          <span data-i18n="nav.japlus">Skirata.Pro | FFA <span class="badge badge-immortal">JA+</span></span>
+                                      </a>
+                                  </li>
+                              </ul>
+
+                          </li>
+                          <li id="information" class="element">
+                              <a class="has-arrow" href="#" title="Informaiton" data-filter-tags="information">
+                                  <span class="fad fa-cube fa-fw"></span>
+                                  <span class="element">Information</span>
+                              </a>
+                              <ul class="element mm-collapse">
+                                <li id="elo" class="element">
+                                    <a [routerLink]="['/elo']" routerLinkActive="active"  title="Elo System" data-filter-tags="Information cards">
+                                        <span data-i18n="nav.informaton_elo_system">ELO System</span>
+                                    </a>
+                                </li>
+                                <li id="download" class="element">
+                                    <a [routerLink]="['/download']" routerLinkActive="active"  title="Download" data-filter-tags="Information download">
+                                        <span data-i18n="nav.information_download">Download</span>
+                                    </a>
+                                </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </nav>
+              </div>
+              <!-- END PRIMARY NAVIGATION -->
+          </div>
+          <!-- END Left Aside -->
+            <div id="content">
+              <!-- BEGIN Page Header -->
+              <div id="header">
+                  <nav class="navbar navbar-expand">
+                      <div class="container-fluid">
+                          <button type="button" id="sidebarAction" class="btn btn-primary">
+                              <i class="fas fa-align-justify fa-fw"></i>
+                          </button>
+                          <div class="collapse navbar-collapse">
+                              <ul class="nav navbar-nav ml-auto">
+                                    <button type="button" class="btn btn-sm btn-secondary waves-effect waves-light mr-2" data-toggle="modal" data-target="#myModal">{{player_connected_message}}</button>
+                                    <a href="https://www.youtube.com/channel/UCuuDiLCE4NLW0R8z1_HrBNQ" target="_blank" type="button" class="btn btn-sm btn-secondary waves-effect waves-light">YouTube</a>
+                                    <label>
+                                        <input type="checkbox" id="fullscreen" />
+                                        <li class="nav-item header-icon color-primary fad fa-expand-wide fa-lg"></li>
+                                    </label>
+                              </ul>
+                          </div>
+                      </div>
+                  </nav>
+              </div>
+
+              
+
+
+              <!-- END Page Header -->
+              <!-- BEGIN Page Content -->
+              <!-- the #js-page-content id is needed for some plugins to initialize -->
+              <div id="page">
+                
+                <router-outlet></router-outlet>
+                
+              </div>
+              <!-- END Page Content -->
+              <!-- Footer -->
+              <footer class="page-footer font-small blue">
+                  <!-- Copyright -->
+                  <div class="footer-copyright text-center py-3">2021 © skirata.pro by&nbsp;<a href='https://github.com/miguelsotobaez' class='text-primary fw-500' title='Mhoker' target='_blank'>Mhoker</a></div>
+                  <!-- Copyright -->
+              </footer>
+              <!-- Footer -->
+          </div>
+          <div class="sidebar-overlay">
+          </div>
+          <div class="settingbar-overlay"></div>
+      </div>
+      <!-- END Page Wrapper -->
+      
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title" [innerHTML]="utils.colorPlayer(japlus_name)"> </h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="m-t-none">Player List</h4>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Frags</th>
+                            <th scope="col">Ping</th>
+                            <th scope="col">Player</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor = "let players of this.japlus_players; index as i;">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{players.frags}}</td>
+                            <td>{{players.ping}}</td>
+                            <td [innerHTML]="utils.colorPlayer(players.name)"></td>
+                          </tr>
+                          <tr *ngFor = "let bots of this.japlus_bots; index as j;">
+                            <th scope="row">{{32}}</th>
+                            <td>{{bots.frags}}</td>
+                            <td>{{bots.ping}}</td>
+                            <td [innerHTML]="utils.colorPlayer(bots.name)"></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>

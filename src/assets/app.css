@@ -1,0 +1,180 @@
+
+.black_name{
+    color: black;
+}
+
+.red_name{
+    color: red;
+}
+
+.green_name{
+    color: lime;
+}
+
+.yellow_name{
+    color: yellow;
+}
+
+.blue_name{
+    color: blue;
+}
+
+.cyan_name{
+    color: cyan;
+}
+
+.magenta_name{
+    color: magenta;
+}
+
+.white_name{
+    color: white;
+}
+
+.orange_name{
+    color: orange;
+}
+
+.grey_name{
+    color: lightgrey;
+}
+
+.badge-japlus {
+    color: #ffffff;
+    background-color: #00ce90;
+}
+
+.badge-base {
+    color: #ffffff;
+    background-color: #0062a3;
+}
+
+.level_icon_1 {
+    color: #dddddd;
+}
+
+.level_icon_10 {
+    color: #e70202; 
+}
+
+.level_icon_20 {
+    color: #ee5902; 
+}
+
+.level_icon_30 {
+    color: #cde400; 
+}
+
+.level_icon_40 {
+    color: #6dc30f; 
+}
+
+.level_icon_50 {
+    color: #0dca9b; 
+}
+
+.level_icon_60 {
+    color: #07cfdd; 
+}
+
+.level_icon_70 {
+    color: #9858ff; 
+}
+
+.level_icon_80 {
+    color: #d650ff;
+}
+
+.level_icon_90 {
+    color: #e938c3; 
+}
+
+.level_icon_100 {
+    color: #f80292 ; 
+}
+
+.level_icon_100_number {
+    color: #00eeff;
+    font-size: 16px;
+}
+
+.table_level{
+    font-size: 10px;
+}
+
+.player_level{
+    font-size: 24px !important;
+}
+
+.badge-immortal {
+    color: #ffffff;
+    background-color: #ec3793;
+}
+
+.badge-diamond {
+    color: #ffffff;
+    background-color: #805ad5;
+}
+
+.badge-platinum {
+    color: #ffffff;
+    background-color: #2aa9a9;
+}
+
+.badge-gold {
+    color: #ffffff;
+    background-color: #b79800;
+}
+
+.badge-silver {
+    color: #ffffff;
+    background-color: #768998;
+}
+
+.badge-bronze {
+    color: #fff;
+    background-color: #965d5d;
+}
+
+.badge-iron {
+    color: #fff;
+    background-color: #403c3c;
+}
+
+.immortal {
+    color: #ec3793;
+}
+
+.diamond {
+    color: #805ad5;
+}
+
+.platinum {
+    color: #2aa9a9;
+}
+
+.gold {
+    color: #b79800;
+}
+
+.silver {
+    color: #768998;
+}
+
+.bronze {
+    color: #965d5d;
+}
+
+.iron {
+    color: #403c3c;
+}
+
+.league_text{
+    color: white;
+}
+
+.badge-donator {
+    font-size: 1.0em;
+    background-color: #692f9e;
+}
+

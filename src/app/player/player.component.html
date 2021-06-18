@@ -1,0 +1,253 @@
+
+
+<div class="row">
+    <div class="col">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom" pt>
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <h2 [innerHTML]="utils.colorPlayerTitle(color_player)"></h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">Dashboard</li>
+                    <li class="breadcrumb-item">{{server_name}}</li>
+                    <li class="breadcrumb-item active">Player</li>
+                </ol>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+
+<div>
+    <div class="row">
+                  
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div [innerHTML]="utils.levelIconPlayer(utils.getLevel(saber_exp))"></div>
+                        <div class="ml-3">
+                            <div>SABER LEVEL</div>
+                            <div *ngIf="saber_exp;" class="h3 mb-0" >{{saber_exp}} Exp.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div [innerHTML]="utils.eloIconPlayer(saber_elo)"></div>
+                        <div class="ml-3">
+                            <div>SABER ELO</div>
+                            <div *ngIf="saber_elo;" class="h3 mb-0" [innerHTML]="saber_elo + ' ' + utils.getLeagueTxt(saber_elo)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div [innerHTML]="utils.levelIconPlayer(utils.getLevel(ff_exp))"></div>
+                        <div class="ml-3">
+                            <div>FULL FORCE LEVEL</div>
+                            <div *ngIf="ff_exp;" class="h3 mb-0" >{{ff_exp}} Exp.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div [innerHTML]="utils.eloIconPlayer(ff_elo)"></div>
+                        <div class="ml-3">
+                            <div>FULL FORCE ELO</div>
+                            <div *ngIf="ff_elo;" class="h3 mb-0" [innerHTML]="ff_elo + ' ' + utils.getLeagueTxt(ff_elo)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-12 col-lg-12 col-xl-6">
+            <div class="card md-6">
+                <div class="card-header">SABER OPPONENTS</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table *ngIf="saber_oponents" datatable [dtOptions]="dtOptionsOponents" class="table table-sm table-hover table-striped" style="width:100%">
+                          <thead>
+                            <tr>
+                                <th>Opponent</th>
+                                <th>W/L</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor = "let player of saber_oponents">
+                                <td [routerLink]="['/'+server+'/player',player.player]" class="pointer" [innerHTML]="utils.colorPlayer(player.oponent)"></td>
+                                <td>{{player.win}} / {{player.lose}}</td>
+                                <td>{{player.total}}</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md-12 col-lg-12 col-xl-6">
+            <div class="card md-6">
+                <div class="card-header">FULL FORCE OPPONENTS</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table *ngIf="full_force_oponents" datatable [dtOptions]="dtOptionsOponents" class="table table-sm table-hover table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Opponent</th>
+                                    <th>W/L</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr *ngFor = "let player of full_force_oponents">
+                                    <td [routerLink]="['/'+server+'/player',player.player]" class="pointer" [innerHTML]="utils.colorPlayer(player.oponent)"></td>
+                                    <td>{{player.win}} / {{player.lose}}</td>
+                                    <td>{{player.total}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+                  
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="card mb-3">
+                <div class="card-header">Saber ELO History</div>
+                <div class="card-body" style="height: 300px">
+                    <canvas baseChart 
+                        [datasets]="saberLineChartData"
+                        [labels]="saberLineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="saberLineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="lineChartType"
+                        [plugins]="lineChartPlugins">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div class="card mb-3">
+                <div class="card-header">Full Force ELO History</div>
+                <div class="card-body" style="height: 300px">
+                    <canvas baseChart 
+                       [datasets]="ffLineChartData"
+                       [labels]="ffLineChartLabels"
+                       [options]="lineChartOptions"
+                       [colors]="ffLineChartColors"
+                       [legend]="lineChartLegend"
+                       [chartType]="lineChartType"
+                       [plugins]="lineChartPlugins">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-xl-6">
+            <div class="card md-6">
+                <div class="card-header">LAST 200 SABER DUELS</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table *ngIf="last_saber_duels" datatable [dtOptions]="dtOptionsLast" class="table table-sm table-hover table-striped" style="width:100%">
+                          <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Winner</th>
+                                <th>Loser</th>
+                                <th>Health</th>
+                                <th>Shield</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor = "let player of last_saber_duels">
+                                <td>{{player.date}}</td>
+                                <td [routerLink]="['/'+server+'/player',player.winner]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_winner)"></td>
+                                <td [routerLink]="['/'+server+'/player',player.loser]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_loser)"></td>
+                                <td>{{player.health}}</td>
+                                <td>{{player.shield}}</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-6">
+          <div class="card md-6">
+              <div class="card-header">LAST 200 FULL FORCE DUELS</div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table *ngIf="last_full_force_duels" datatable [dtOptions]="dtOptionsLast" class="table table-sm table-hover table-striped" style="width:100%">
+                          <thead>
+                              <tr>
+                                <th>Date</th>
+                                <th>Winner</th>
+                                <th>Loser</th>
+                                <th>Health</th>
+                                <th>Shield</th>
+                              </tr>
+                          </thead>
+                          <tbody >
+                            <tr *ngFor = "let player of last_full_force_duels">
+                                <td>{{player.date}}</td>
+                                <td [routerLink]="['/'+server+'/player',player.winner]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_winner)"></td>
+                                <td [routerLink]="['/'+server+'/player',player.loser]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_loser)"></td>
+                                <td>{{player.health}}</td>
+                                <td>{{player.shield}}</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

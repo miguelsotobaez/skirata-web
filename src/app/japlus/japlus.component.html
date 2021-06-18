@@ -1,0 +1,228 @@
+
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom" pt>
+                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                                <h2><span class='fad fa-chart-pie-alt fa-fw'></span> Skirata.Pro | FFA <span class="badge badge-immortal">JA+</span></h2>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">Dashboard</li>
+                                    <li class="breadcrumb-item active"> Skirata.Pro | FFA</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-body no-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="fad fa-starfighter display-4 text-primary"></div>
+                                    <div class="ml-3">
+                                        <div>TOTAL PLAYERS</div>
+                                        <div *ngIf="server_stats?.total_players; else 0" class="h3 mb-0">{{server_stats.total_players | number:'':'es-ES'}} <i class="text-success fad fa-level-up"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-body no-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="fad fa-space-station-moon-alt display-4 text-secondary"></div>
+                                    <div class="ml-3">
+                                        <div>TOTAL FFA KILLS</div>
+                                        <div *ngIf="server_stats?.total_ffa_kills; else 0" class="h3 mb-0">{{server_stats.total_ffa_kills | number:'':'es-ES'}} <i class="text-success fad fa-level-up"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-body no-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="fad fa-swords-laser display-4 text-tertiary"></div>
+                                    <div class="ml-3">
+                                        <div>TOTAL SABER DUELS</div>
+                                        <div *ngIf="server_stats?.total_saber_duels; else 0" class="h3 mb-0">{{server_stats.total_saber_duels | number:'':'es-ES'}} <i class="text-success fad fa-level-up"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-body no-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="fad fa-jedi display-4 text-quaternary"></div>
+                                    <div class="ml-3">
+                                        <div>TOTAL FULL FORCE DUELS</div>
+                                        <div *ngIf="server_stats?.total_ff_duels; else 0"  class="h3 mb-0">{{server_stats.total_ff_duels | number:'':'es-ES'}} <i class="text-success fad fa-level-up"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-body no-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="fad fa-sword-laser-alt display-4 text-primary"></div>
+                                    <div class="ml-3">
+                                        <div>KILLER OF THE WEEK</div>
+                                        <div *ngIf="killer_of_the_week?.color_winner; else ''" class="h3 mb-0"  [innerHTML]="utils.colorPlayer(killer_of_the_week.color_winner)"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                        <div class="card mb-3">
+                            <div class="card-body no-header">
+                                <div class="d-flex align-items-center">
+                                    <div class="fad fa-sword-laser display-4 text-secondary"></div>
+                                    <div class="ml-3">
+                                        <div>NOOB OF THE WEEK</div>
+                                        <div *ngIf="noob_of_the_week?.color_loser; else ''" class="h3 mb-0"  [innerHTML]="utils.colorPlayer(noob_of_the_week.color_loser)"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                        <div class="card md-6">
+                            <div class="card-header">TOP SABER RANKING</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table *ngIf="saber_elo_level" datatable [dtOptions]="dtOptionsTop" class="table table-sm table-hover table-striped" style="width:100%">
+                                      <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Lvl</th>
+                                            <th>W/L</th>
+                                            <th>ELO</th>
+                                            <th>League</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor = "let player of saber_elo_level" >
+                                            <td >{{player.pos}}</td>
+                                            <td [routerLink]="['/'+server+'/player',player.winner]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_winner)"></td>
+                                            <td [innerHTML]="utils.levelIcon(utils.getLevel(player.saber_exp))"></td>
+                                            <td >{{player.win | number:'':'es-ES'}} / {{player.lose | number:'':'es-ES'}}</td>
+                                            <td >{{player.elo | number:'':'es-ES'}}</td>
+                                            <td [innerHTML]="utils.getLeague(player.elo)"></td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                      <div class="card md-6">
+                          <div class="card-header">TOP FULL FORCE RANKING</div>
+                          <div class="card-body">
+                              <div class="table-responsive">
+                                  <table *ngIf="full_force_elo_level" datatable [dtOptions]="dtOptionsTop" class="table table-sm table-hover table-striped" style="width:100%">
+                                      <thead>
+                                          <tr>
+                                              <th>#</th>
+                                              <th>Name</th>
+                                              <th>Lvl</th>
+                                              <th>W/L</th>
+                                              <th>ELO</th>
+                                              <th>League</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody >
+                                        <tr *ngFor = "let player of full_force_elo_level">
+                                          <td>{{player.pos}}</td>
+                                          <td [routerLink]="['/'+server+'/player',player.winner]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_winner)"></td>
+                                          <td [innerHTML]="utils.levelIcon(utils.getLevel(player.ff_exp))"></td>
+                                          <td>{{player.win | number:'':'es-ES'}} / {{player.lose | number:'':'es-ES'}}</td>
+                                          <td>{{player.elo | number:'':'es-ES'}}</td>
+                                          <td [innerHTML]="utils.getLeague(player.elo)"></td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                        <div class="card md-6">
+                            <div class="card-header">LAST 200 SABER DUELS</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table *ngIf="last_saber_duels" datatable [dtOptions]="dtOptionsLast" class="table table-sm table-hover table-striped" style="width:100%">
+                                      <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Winner</th>
+                                            <th>Loser</th>
+                                            <th>Health</th>
+                                            <th>Shield</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr  *ngFor = "let player of last_saber_duels">
+                                            <td>{{player.date}}</td>
+                                            <td [routerLink]="['/'+server+'/player',player.winner]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_winner)"></td>
+                                            <td [routerLink]="['/'+server+'/player',player.loser]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_loser)"></td>
+                                            <td>{{player.health}}</td>
+                                            <td>{{player.shield}}</td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-6">
+                      <div class="card md-6">
+                          <div class="card-header">LAST 200 FULL FORCE DUELS</div>
+                          <div class="card-body">
+                              <div class="table-responsive">
+                                  <table *ngIf="last_full_force_duels" datatable [dtOptions]="dtOptionsLast" class="table table-sm table-hover table-striped" style="width:100%">
+                                      <thead>
+                                          <tr>
+                                            <th>Date</th>
+                                            <th>Winner</th>
+                                            <th>Loser</th>
+                                            <th>Health</th>
+                                            <th>Shield</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody >
+                                        <tr *ngFor = "let player of last_full_force_duels">
+                                            <td>{{player.date}}</td>
+                                            <td [routerLink]="['/'+server+'/player',player.winner]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_winner)"></td>
+                                            <td [routerLink]="['/'+server+'/player',player.loser]" class="pointer" [innerHTML]="utils.colorPlayer(player.color_loser)"></td>
+                                            <td>{{player.health}}</td>
+                                            <td>{{player.shield}}</td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
